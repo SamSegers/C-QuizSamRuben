@@ -75,7 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\ViewModelQuizes.cs" />
+    <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="Views\ViewEditQuiz.xaml.cs">
       <DependentUpon>ViewEditQuiz.xaml</DependentUpon>
     </Compile>

@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +13,33 @@ namespace EindopdrachtProg5RubenSam.ViewModel
     {
         public ViewModelCreateQuiz()
         {
-            OpenQuizes = new RelayCommand(Open, CanOpen);
-        }
-        
-        private void Open()
-        {
-            ViewCreateQuiz VCQ = new ViewCreateQuiz();
-            VCQ.Show();
+            CreateQuiz = new RelayCommand(AddQuiz,CanAddQuiz);
+            OpenEditQuiz = new RelayCommand(OpenQuiz,CanOpenQuiz);
         }
 
-        private bool CanOpen()
+        private void AddQuiz()
+        { 
+        
+        }
+
+        private void OpenQuiz()
+        { 
+        
+        }
+
+        private bool CanAddQuiz()
+        {
+            /* todo: uitbreiden of er echt een naam is voor de quiz etc. */
+            return true;
+        }
+
+        private bool CanOpenQuiz()
         {
             return true;
         }
 
-        public ICommand OpenQuizes { get; set; }
+        public ICommand CreateQuiz { get; set; }
+
+        public ICommand OpenEditQuiz { get; set; }
     }
 }

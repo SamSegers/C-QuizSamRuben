@@ -10,9 +10,9 @@ using System.Windows.Input;
 
 namespace EindopdrachtProg5RubenSam.ViewModel
 {
-    public class ViewModelQuizes : ViewModelBase
+    public class ViewModelMain : ViewModelBase
     {
-        public ViewModelQuizes()
+        public ViewModelMain()
         {
             OpenQuizes = new RelayCommand(CreateOpen, CanOpen);
             PlayQuizes = new RelayCommand(PlayOpen,CanOpen);
