@@ -37,3 +37,9 @@ C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\Ein
 C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\EindopdrachtProg5RubenSam.csproj.GenerateResource.Cache
 C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\EindopdrachtProg5RubenSam.exe
 C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\EindopdrachtProg5RubenSam.pdb
+C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\Views\ViewSelectQuiz.baml
+C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\Views\ViewSelectQuiz.g.cs
+C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\Views\ViewPlayQuiz.baml
+C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\Views\ViewScoreQuiz.baml
+C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\Views\ViewPlayQuiz.g.cs
+C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\obj\Debug\Views\ViewScoreQuiz.g.cs

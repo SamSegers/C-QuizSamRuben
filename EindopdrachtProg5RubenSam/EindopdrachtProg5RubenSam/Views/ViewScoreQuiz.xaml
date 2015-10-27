@@ -1,0 +1,14 @@
+﻿<Window x:Class="EindopdrachtProg5RubenSam.Views.ViewScoreQuiz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ViewScoreQuiz" Height="329.434" Width="322.642">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Je behaalde score is:" HorizontalAlignment="Left" Margin="98,49,0,0" VerticalAlignment="Top" Height="26" Width="118"/>
+        <Label Content="Score" HorizontalAlignment="Left" Margin="138,109,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+
+    </Grid>
+</Window>

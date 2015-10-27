@@ -5,6 +5,7 @@
         DataContext="{Binding Quizes, Source={StaticResource Locator}}">
     <Grid>
         <Button Content="Maak Quiz" Command="{Binding OpenQuizes}" HorizontalAlignment="Left" Margin="215,42,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Speel Quiz" Command="{Binding PlayQuizes}" HorizontalAlignment="Left" Margin="215,150,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

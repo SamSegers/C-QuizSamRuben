@@ -42,7 +42,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<ViewModelCreateQuiz>();
+            SimpleIoc.Default.Register<ViewModelQuizes>();
         }
 
         public MainViewModel Main
@@ -53,11 +53,11 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             }
         }
 
-        public ViewModelCreateQuiz Quizes
+        public ViewModelQuizes Quizes
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<ViewModelCreateQuiz>();
+                return ServiceLocator.Current.GetInstance<ViewModelQuizes>();
             }
         }
 
