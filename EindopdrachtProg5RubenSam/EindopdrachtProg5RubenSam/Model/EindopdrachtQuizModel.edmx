@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EindopdrachtQuizModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EindopdrachtQuizModelStoreContainer">
+    <EntitySet Name="Quizs" EntityType="EindopdrachtQuizModel.Store.Quizs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vraags" EntityType="EindopdrachtQuizModel.Store.Vraags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Antwoords" EntityType="EindopdrachtQuizModel.Store.Antwoords" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="QuizVraag" Association="EindopdrachtQuizModel.Store.QuizVraag">
+      <End Role="Quiz" EntitySet="Quizs" />
+      <End Role="Vraag" EntitySet="Vraags" />
+    </AssociationSet>
+    <AssociationSet Name="VraagAntwoord" Association="EindopdrachtQuizModel.Store.VraagAntwoord">
+      <End Role="Vraag" EntitySet="Vraags" />
+      <End Role="Antwoord" EntitySet="Antwoords" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Quizs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vraags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuizId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Antwoords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correct" Type="int" Nullable="false" />
+    <Property Name="VraagId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="QuizVraag">
+    <End Role="Quiz" Type="EindopdrachtQuizModel.Store.Quizs" Multiplicity="1" />
+    <End Role="Vraag" Type="EindopdrachtQuizModel.Store.Vraags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vraag">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VraagAntwoord">
+    <End Role="Vraag" Type="EindopdrachtQuizModel.Store.Vraags" Multiplicity="1" />
+    <End Role="Antwoord" Type="EindopdrachtQuizModel.Store.Antwoords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vraag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Antwoord">
+        <PropertyRef Name="VraagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EindopdrachtQuizModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="QuizContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Quizs" EntityType="EindopdrachtQuizModel.Quiz" />
+          <EntitySet Name="Vraags" EntityType="EindopdrachtQuizModel.Vraag" />
+          <EntitySet Name="Antwoords" EntityType="EindopdrachtQuizModel.Antwoord" />
+          <AssociationSet Name="QuizVraag" Association="EindopdrachtQuizModel.QuizVraag">
+            <End Role="Quiz" EntitySet="Quizs" />
+            <End Role="Vraag" EntitySet="Vraags" />
+          </AssociationSet>
+          <AssociationSet Name="VraagAntwoord" Association="EindopdrachtQuizModel.VraagAntwoord">
+            <End Role="Vraag" EntitySet="Vraags" />
+            <End Role="Antwoord" EntitySet="Antwoords" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Vraags" Relationship="EindopdrachtQuizModel.QuizVraag" FromRole="Quiz" ToRole="Vraag" />
+        </EntityType>
+        <EntityType Name="Vraag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" />
+          <NavigationProperty Name="Quiz" Relationship="EindopdrachtQuizModel.QuizVraag" FromRole="Vraag" ToRole="Quiz" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Antwoords" Relationship="EindopdrachtQuizModel.VraagAntwoord" FromRole="Vraag" ToRole="Antwoord" />
+        </EntityType>
+        <EntityType Name="Antwoord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Correct" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vraag" Relationship="EindopdrachtQuizModel.VraagAntwoord" FromRole="Antwoord" ToRole="Vraag" />
+          <Property Name="VraagId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="QuizVraag">
+          <End Type="EindopdrachtQuizModel.Quiz" Role="Quiz" Multiplicity="1" />
+          <End Type="EindopdrachtQuizModel.Vraag" Role="Vraag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vraag">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VraagAntwoord">
+          <End Type="EindopdrachtQuizModel.Vraag" Role="Vraag" Multiplicity="1" />
+          <End Type="EindopdrachtQuizModel.Antwoord" Role="Antwoord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vraag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Antwoord">
+              <PropertyRef Name="VraagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EindopdrachtQuizModelStoreContainer" CdmEntityContainer="QuizContext">
+    <EntitySetMapping Name="Quizs">
+      <EntityTypeMapping TypeName="IsTypeOf(EindopdrachtQuizModel.Quiz)">
+        <MappingFragment StoreEntitySet="Quizs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vraags">
+      <EntityTypeMapping TypeName="IsTypeOf(EindopdrachtQuizModel.Vraag)">
+        <MappingFragment StoreEntitySet="Vraags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Antwoords">
+      <EntityTypeMapping TypeName="IsTypeOf(EindopdrachtQuizModel.Antwoord)">
+        <MappingFragment StoreEntitySet="Antwoords">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="VraagId" ColumnName="VraagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

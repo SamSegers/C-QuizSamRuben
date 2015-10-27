@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -75,6 +77,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Antwoord.cs">
+      <DependentUpon>EindopdrachtQuizModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EindopdrachtQuizModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EindopdrachtQuizModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EindopdrachtQuizModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EindopdrachtQuizModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EindopdrachtQuizModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EindopdrachtQuizModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Quiz.cs">
+      <DependentUpon>EindopdrachtQuizModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vraag.cs">
+      <DependentUpon>EindopdrachtQuizModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ViewModelQuizes.cs" />
     <Compile Include="Views\ViewEditQuiz.xaml.cs">
       <DependentUpon>ViewEditQuiz.xaml</DependentUpon>
@@ -151,6 +177,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\EindopdrachtQuizModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EindopdrachtQuizModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\EindopdrachtQuizModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EindopdrachtQuizModel.Context.cs</LastGenOutput>
+      <DependentUpon>EindopdrachtQuizModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\EindopdrachtQuizModel.edmx.diagram">
+      <DependentUpon>EindopdrachtQuizModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\EindopdrachtQuizModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EindopdrachtQuizModel.cs</LastGenOutput>
+      <DependentUpon>EindopdrachtQuizModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -162,6 +205,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\EindopdrachtQuizModel.edmx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
