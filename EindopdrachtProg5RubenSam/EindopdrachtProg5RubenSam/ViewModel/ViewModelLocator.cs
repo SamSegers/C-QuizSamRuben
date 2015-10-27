@@ -41,8 +41,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<ViewModelCreateQuiz>();
         }
 
         public MainViewModel Main
@@ -52,7 +52,15 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public ViewModelCreateQuiz Quizes
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ViewModelCreateQuiz>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

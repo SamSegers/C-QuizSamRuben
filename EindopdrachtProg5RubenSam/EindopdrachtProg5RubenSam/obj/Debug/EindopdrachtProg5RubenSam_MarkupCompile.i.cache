@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Sam\documents\visual studio 2013\Projects\EindopdrachtProg5RubenSam\EindopdrachtProg5RubenSam\App.xaml
-11151548125
+456188108
 
-112093100229
+155664157
 20-373078230
-MainWindow.xaml;
+Views\ViewEditQuiz.xaml;Views\MainWindow.xaml;Views\ViewCreateQuiz.xaml;Views\ViewEditVraag.xaml;
 
-True
+False
 

@@ -1,0 +1,21 @@
+﻿<Window x:Class="EindopdrachtProg5RubenSam.Views.EditQuiz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EditQuiz" Height="300" Width="549.795">
+    <Grid>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="172,10,0,0" TextWrapping="Wrap" Text="Vraag hier invullen" VerticalAlignment="Top" Width="208"/>
+        <Label Content="Nieuwe vraag:" HorizontalAlignment="Left" Margin="60,9,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
+        <ListView HorizontalAlignment="Left" Height="98" Margin="10,114,0,0" VerticalAlignment="Top" Width="522">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Naam" Width="75"/>
+                    <GridViewColumn Header="Categorie" Width="75"/>
+                    <GridViewColumn Header="Aant. antwoorden" Width="100"/>
+                    <GridViewColumn Header="Edit" Width="75"/>
+                    <GridViewColumn Header="Delete" Width="75"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
