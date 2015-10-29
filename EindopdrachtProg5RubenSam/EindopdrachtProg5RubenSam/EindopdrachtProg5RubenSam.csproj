@@ -75,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Antwoord.cs" />
+    <Compile Include="Models\Quiz.cs" />
+    <Compile Include="ViewModel\ViewModelCreateQuiz.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="Views\ViewEditQuiz.xaml.cs">
       <DependentUpon>ViewEditQuiz.xaml</DependentUpon>
@@ -96,6 +99,7 @@
     <Compile Include="Views\ViewSelectQuiz.xaml.cs">
       <DependentUpon>ViewSelectQuiz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Vraag.cs" />
     <Page Include="Views\ViewEditQuiz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
