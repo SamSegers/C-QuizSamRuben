@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EindopdrachtQuizDbModelStoreContainer" CdmEntityContainer="EindopdrachtQuizDbEntities">
+    <EntitySetMapping Name="Antwoords">
+      <EntityTypeMapping TypeName="EindopdrachtQuizDbModel.Antwoord">
+        <MappingFragment StoreEntitySet="Antwoords">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="VraagId" ColumnName="VraagId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quizs">
+      <EntityTypeMapping TypeName="EindopdrachtQuizDbModel.Quiz">
+        <MappingFragment StoreEntitySet="Quizs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vraags">
+      <EntityTypeMapping TypeName="EindopdrachtQuizDbModel.Vraag">
+        <MappingFragment StoreEntitySet="Vraags">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EindopdrachtQuizDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Antwoords">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Correct" Type="int" Nullable="false" />
+    <Property Name="VraagId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quizs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vraags">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuizId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_QuizVraag">
+    <End Role="Quizs" Type="Self.Quizs" Multiplicity="1" />
+    <End Role="Vraags" Type="Self.Vraags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quizs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vraags">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VraagAntwoord">
+    <End Role="Vraags" Type="Self.Vraags" Multiplicity="1" />
+    <End Role="Antwoords" Type="Self.Antwoords" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vraags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Antwoords">
+        <PropertyRef Name="VraagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EindopdrachtQuizDbModelStoreContainer">
+    <EntitySet Name="Antwoords" EntityType="Self.Antwoords" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quizs" EntityType="Self.Quizs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vraags" EntityType="Self.Vraags" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_QuizVraag" Association="Self.FK_QuizVraag">
+      <End Role="Quizs" EntitySet="Quizs" />
+      <End Role="Vraags" EntitySet="Vraags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VraagAntwoord" Association="Self.FK_VraagAntwoord">
+      <End Role="Vraags" EntitySet="Vraags" />
+      <End Role="Antwoords" EntitySet="Antwoords" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

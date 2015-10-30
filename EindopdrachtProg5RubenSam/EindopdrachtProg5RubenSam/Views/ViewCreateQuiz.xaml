@@ -2,21 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ViewCreateQuiz" Height="330.612" Width="549.796"
-        >
+        DataContext="{Binding Quizes, Source={StaticResource Locator}}">
     <Grid>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="172,10,0,0" TextWrapping="Wrap" Text="Quiz naam hier invullen" VerticalAlignment="Top" Width="208"/>
+        <Button Content="Add" Command="{Binding CreateQuiz}" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Path=QuizName, Mode=TwoWay}"  Height="25" Margin="172,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208"/>
         <Label Content="Nieuwe quiz:" HorizontalAlignment="Left" Margin="88,10,0,0" VerticalAlignment="Top" Height="25" Width="79"/>
-        <ListView HorizontalAlignment="Left" Height="98" Margin="10,114,0,0" VerticalAlignment="Top" Width="522">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Naam" Width="75"/>
-                    <GridViewColumn Header="Aant. vragen" Width="75"/>
-                    <GridViewColumn Header="Edit" Width="75"/>
-                    <GridViewColumn Header="Delete" Width="75"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid ItemsSource="{Binding Quizes}" Margin="10,51,10,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="75"/>
+                <DataGridTextColumn Header="Naam" Binding="{Binding Name}" Width="75"/>
+                <DataGridTextColumn Header="Aant. vragen" Binding="{Binding Vragen}" Width="75"/>
+                <DataGridTextColumn Header="Edit" Width="75"/>
+                <DataGridTextColumn Header="Delete" Width="75"/>
+            </DataGrid.Columns>
+    </DataGrid>
+
 
     </Grid>
 </Window>

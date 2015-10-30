@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EindopdrachtQuizDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Antwoord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Correct" Type="Int32" Nullable="false" />
+    <Property Name="VraagId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Vraag" Relationship="Self.FK_VraagAntwoord" FromRole="Antwoords" ToRole="Vraags" />
+  </EntityType>
+  <EntityType Name="Quiz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Vraags" Relationship="Self.FK_QuizVraag" FromRole="Quizs" ToRole="Vraags" />
+  </EntityType>
+  <EntityType Name="Vraag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="QuizId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Antwoords" Relationship="Self.FK_VraagAntwoord" FromRole="Vraags" ToRole="Antwoords" />
+    <NavigationProperty Name="Quiz" Relationship="Self.FK_QuizVraag" FromRole="Vraags" ToRole="Quizs" />
+  </EntityType>
+  <Association Name="FK_VraagAntwoord">
+    <End Role="Vraags" Type="Self.Vraag" Multiplicity="1" />
+    <End Role="Antwoords" Type="Self.Antwoord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vraags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Antwoords">
+        <PropertyRef Name="VraagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuizVraag">
+    <End Role="Quizs" Type="Self.Quiz" Multiplicity="1" />
+    <End Role="Vraags" Type="Self.Vraag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quizs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vraags">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EindopdrachtQuizDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Antwoords" EntityType="Self.Antwoord" />
+    <EntitySet Name="Quizs" EntityType="Self.Quiz" />
+    <EntitySet Name="Vraags" EntityType="Self.Vraag" />
+    <AssociationSet Name="FK_VraagAntwoord" Association="Self.FK_VraagAntwoord">
+      <End Role="Vraags" EntitySet="Vraags" />
+      <End Role="Antwoords" EntitySet="Antwoords" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuizVraag" Association="Self.FK_QuizVraag">
+      <End Role="Quizs" EntitySet="Quizs" />
+      <End Role="Vraags" EntitySet="Vraags" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
