@@ -99,9 +99,10 @@
     <Compile Include="Quiz.cs">
       <DependentUpon>DeDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AnswerViewModel.cs" />
     <Compile Include="ViewModel\QuestionsViewModel.cs" />
     <Compile Include="ViewModel\QuizViewModel.cs" />
-    <Compile Include="ViewModel\ViewEditQuiz.cs" />
+    <Compile Include="ViewModel\ViewModelCreateAnswer.cs" />
     <Compile Include="ViewModel\ViewModelCreateQuestion.cs" />
     <Compile Include="ViewModel\ViewModelCreateQuiz.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />

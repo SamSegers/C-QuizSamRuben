@@ -28,6 +28,8 @@ namespace EindopdrachtProg5RubenSam.Views
         public ViewEditVraag(int Id, string Name)
         {
             InitializeComponent();
+            txtNaam.Text = Name;
+            lblId.Content = Id;
         }
     }
 }

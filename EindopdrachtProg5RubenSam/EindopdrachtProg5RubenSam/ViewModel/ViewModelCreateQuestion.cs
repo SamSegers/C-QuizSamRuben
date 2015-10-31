@@ -80,7 +80,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                 }
 
             }
-            this._VraagNaam = "";
+            this.VraagName = "";
                         
             var QuestionList = DbContext.Vragen.ToList().Select(Q => new QuestionsViewModel(Q));
             QuestionList = new ObservableCollection<QuestionsViewModel>(QuestionList);
@@ -112,7 +112,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                         // the current instance as InnerException
                         raise = new InvalidOperationException(message, raise);
                     }
-                    throw raise;
+                    //throw raise;
                 }
             }
         }
@@ -175,7 +175,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                     QuestionList = new ObservableCollection<QuestionsViewModel>(QuestionList);
             }
         }
-
+        
         public ICommand CreateQuestion { get; set; }
         public ICommand UpdateQuizName { get; set; }
 
