@@ -19,7 +19,13 @@ namespace EindopdrachtProg5RubenSam.Views
     /// </summary>
     public partial class ViewEditVraag : Window
     {
+
         public ViewEditVraag()
+        {
+            InitializeComponent();
+        }
+
+        public ViewEditVraag(int Id, string Name)
         {
             InitializeComponent();
         }

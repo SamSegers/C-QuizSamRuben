@@ -42,26 +42,39 @@ namespace EindopdrachtProg5RubenSam.ViewModel
 
         private void AddQuiz()
         {
-            Quiz Q = new Quiz();
-            Q.Name = _QuizName;
-            DbContext.Quizen.Add(Q);
-            DbContext.SaveChanges();
-            this._QuizName = "";
+            try
+            {
+                Quiz Q = new Quiz();
+                Q.Name = _QuizName;
+                DbContext.Quizen.Add(Q);
+                DbContext.SaveChanges();
+                this._QuizName = "";
+            }
+            catch { }
         }
 
         private void OpenQuiz()
         {
-            Views.ViewEditQuiz VEQ = new Views.ViewEditQuiz(this._SelectedQuiz.Id,this._SelectedQuiz.Name);
-            VEQ.Show();
+            try
+            {
+                Views.ViewEditQuiz VEQ = new Views.ViewEditQuiz(this._SelectedQuiz.Id, this._SelectedQuiz.Name);
+                VEQ.Show();
+            }
+            catch { }
             
         }
 
         // Moet nog refreshen
         private void RemoveQuiz()
         {
-            DbContext.Quizen.Remove(SelectedQuiz.Quiz);
-            DbContext.SaveChanges();
-            RaisePropertyChanged();
+            try
+            {
+                DbContext.Quizen.Remove(SelectedQuiz.Quiz);
+                DbContext.SaveChanges();
+                RaisePropertyChanged();
+            }
+            catch
+            { }
         }
 
         private bool CanAddQuiz()

@@ -9,12 +9,12 @@
             <ColumnDefinition Width="79*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Add" Command="{Binding CreateQuestion}" HorizontalAlignment="Left" Margin="2.962,10,0,0" VerticalAlignment="Top" Width="75" Height="25" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="172,10,0,0" TextWrapping="Wrap" Text="Vraag hier invullen" VerticalAlignment="Top" Width="208"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="172,10,0,0" TextWrapping="Wrap" Text="{Binding Path=VraagName, Mode=TwoWay}" VerticalAlignment="Top" Width="208"/>
         <Label Content="Nieuwe vraag:" HorizontalAlignment="Left" Margin="60,9,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
         <Label Content="Naam:" HorizontalAlignment="Left" Margin="60,62,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txtNaam"  HorizontalAlignment="Left" Height="23" Margin="109,62,0,0" TextWrapping="Wrap" Text="{Binding Path=QuizName, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
         <Label Content="id:" HorizontalAlignment="Left" Margin="263,62,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblId" Content="-1" HorizontalAlignment="Left" Margin="303,59,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblId" Content="{Binding Path=QuizId, Mode=TwoWay}" HorizontalAlignment="Left" Margin="303,59,0,0" VerticalAlignment="Top"/>
         <Button Content="Update" Command="{Binding UpdateQuizName}" HorizontalAlignment="Left" Margin="2.962,62,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
         <DataGrid SelectedItem="{Binding SelectedQuestion}" ItemsSource="{Binding Questions}" Margin="8,106,10,118" Grid.ColumnSpan="2">
             <DataGrid.Columns>
@@ -24,5 +24,7 @@
                 <DataGridTextColumn Header="Aant. antwoorden" Binding="{Binding Antwoorden}" Width="120"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Edit" Command="{Binding OpenEditQuestion}" HorizontalAlignment="Left" Margin="183,331,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <Button Content="Delete" Command="{Binding DeleteQuestion}" HorizontalAlignment="Left" Margin="278,330,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
     </Grid>
 </Window>
