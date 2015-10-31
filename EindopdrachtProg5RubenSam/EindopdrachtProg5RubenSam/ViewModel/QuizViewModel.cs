@@ -27,6 +27,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             set { /*_Quiz.Vraags = value; RaisePropertyChanged("Name");*/ }
         }
 
+        public Quiz Quiz { get { return _Quiz; } }
+
         private Quiz _Quiz;
         public QuizViewModel()
         {

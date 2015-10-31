@@ -99,17 +99,20 @@
     <Compile Include="Quiz.cs">
       <DependentUpon>DeDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\QuestionsViewModel.cs" />
     <Compile Include="ViewModel\QuizViewModel.cs" />
+    <Compile Include="ViewModel\ViewEditQuiz.cs" />
+    <Compile Include="ViewModel\ViewModelCreateQuestion.cs" />
     <Compile Include="ViewModel\ViewModelCreateQuiz.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
-    <Compile Include="Views\ViewEditQuiz.xaml.cs">
-      <DependentUpon>ViewEditQuiz.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ViewCreateQuiz.xaml.cs">
       <DependentUpon>ViewCreateQuiz.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\ViewEditQuiz.xaml.cs">
+      <DependentUpon>ViewEditQuiz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewEditVraag.xaml.cs">
       <DependentUpon>ViewEditVraag.xaml</DependentUpon>
     </Compile>
@@ -125,10 +128,6 @@
     <Compile Include="Vraag.cs">
       <DependentUpon>DeDatabase.tt</DependentUpon>
     </Compile>
-    <Page Include="Views\ViewEditQuiz.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +141,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ViewCreateQuiz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewEditQuiz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

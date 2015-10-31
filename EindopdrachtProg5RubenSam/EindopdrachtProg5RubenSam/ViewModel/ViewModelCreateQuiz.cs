@@ -14,12 +14,27 @@ namespace EindopdrachtProg5RubenSam.ViewModel
     {
         private Context DbContext;
         private string _QuizName;
+
+        private QuizViewModel _SelectedQuiz;
+        public QuizViewModel SelectedQuiz
+        {
+            get
+            {
+                return _SelectedQuiz;
+            }
+            set
+            {
+                _SelectedQuiz = value;
+                RaisePropertyChanged();
+            }
+        }
         public ViewModelCreateQuiz()
         {
             this._QuizName = "Quiz naam hier invullen";
             DbContext = new Context();
             CreateQuiz = new RelayCommand(AddQuiz,CanAddQuiz);
             OpenEditQuiz = new RelayCommand(OpenQuiz,CanOpenQuiz);
+            DeleteQuiz = new RelayCommand(RemoveQuiz, CanDeleteQuiz);
 
             var QuizList = DbContext.Quizen.ToList().Select(Q => new QuizViewModel(Q));
             Quizes = new ObservableCollection<QuizViewModel>(QuizList);
@@ -35,8 +50,18 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         }
 
         private void OpenQuiz()
-        { 
-        
+        {
+            Views.ViewEditQuiz VEQ = new Views.ViewEditQuiz(this._SelectedQuiz.Id,this._SelectedQuiz.Name);
+            VEQ.Show();
+            
+        }
+
+        // Moet nog refreshen
+        private void RemoveQuiz()
+        {
+            DbContext.Quizen.Remove(SelectedQuiz.Quiz);
+            DbContext.SaveChanges();
+            RaisePropertyChanged();
         }
 
         private bool CanAddQuiz()
@@ -50,6 +75,11 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             return true;
         }
 
+        private bool CanDeleteQuiz()
+        {
+            return true;
+        }
+
         public string QuizName
         {
             get { return _QuizName; }
@@ -59,6 +89,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         public ICommand CreateQuiz { get; set; }
 
         public ICommand OpenEditQuiz { get; set; }
+
+        public ICommand DeleteQuiz { get; set; }
 
         public ObservableCollection<QuizViewModel> Quizes { get; set; }
 

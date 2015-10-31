@@ -15,13 +15,22 @@ using System.Windows.Shapes;
 namespace EindopdrachtProg5RubenSam.Views
 {
     /// <summary>
-    /// Interaction logic for EditQuiz.xaml
+    /// Interaction logic for ViewEditQuiz.xaml
     /// </summary>
-    public partial class EditQuiz : Window
+    public partial class ViewEditQuiz : Window
     {
-        public EditQuiz()
+
+        public ViewEditQuiz()
         {
             InitializeComponent();
+        }
+
+        public ViewEditQuiz(int Id, string Name)
+        {
+            InitializeComponent();
+            this.lblId.Content = Id;
+            this.txtNaam.Text = Name;
+            
         }
     }
 }
