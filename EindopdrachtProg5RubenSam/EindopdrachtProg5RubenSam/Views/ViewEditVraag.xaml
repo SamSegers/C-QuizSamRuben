@@ -25,8 +25,8 @@
         <TextBox HorizontalAlignment="Left" Height="25" Margin="172,35,0,0" TextWrapping="Wrap" Text="{Binding Path=Category, Mode=TwoWay}" VerticalAlignment="Top" Width="208"/>
 
         <Label Content="Categorie:" HorizontalAlignment="Left" Margin="60,34,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
-        
-        <DataGrid SelectedItem="{Binding SelectedAnswer}" ItemsSource="{Binding Answers}" Margin="40,129,30,64">
+
+        <DataGrid SelectedItem="{Binding SelectedAnswer}"  AutoGenerateColumns="False" ItemsSource="{Binding Answers}" Margin="40,129,30,64">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="75"/>
                 <DataGridTextColumn Header="Tekst" Binding="{Binding Name}" Width="75"/>
@@ -35,10 +35,6 @@
         </DataGrid>
 
         <Button Command="{Binding DeleteAnswer}" Content="Delete" HorizontalAlignment="Left" Margin="254,357,0,0" VerticalAlignment="Top" Width="75"/>
-        
-        <Label Content="True/False" HorizontalAlignment="Left" Margin="40,354,0,0" VerticalAlignment="Top"/>
-
-        <CheckBox IsChecked="{Binding IsCorrect}" Content="" HorizontalAlignment="Left" Margin="103,360,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

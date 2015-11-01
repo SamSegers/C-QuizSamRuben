@@ -7,7 +7,7 @@
         <Button Content="Add" Command="{Binding CreateQuiz}" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Path=QuizName, Mode=TwoWay}"  Height="25" Margin="172,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208"/>
         <Label Content="Nieuwe quiz:" HorizontalAlignment="Left" Margin="88,10,0,0" VerticalAlignment="Top" Height="25" Width="79"/>
-        <DataGrid SelectedItem="{Binding SelectedQuiz}" ItemsSource="{Binding Quizes}" Margin="10,57,10,77">
+        <DataGrid SelectedItem="{Binding SelectedQuiz}" ItemsSource="{Binding Quizes, Mode=TwoWay}" AutoGenerateColumns="False" Margin="10,57,10,77">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="75"/>
                 <DataGridTextColumn Header="Naam" Binding="{Binding Name}" Width="75"/>

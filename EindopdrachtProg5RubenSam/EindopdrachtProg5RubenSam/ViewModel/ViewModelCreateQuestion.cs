@@ -61,6 +61,10 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 DbContext.Vragen.Add(V);
                 DbContext.SaveChanges();
+
+                QuestionsViewModel QVM = new QuestionsViewModel(V);
+                this.Questions.Add(QVM);
+                RaisePropertyChanged("Questions");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -143,7 +147,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 DbContext.Vragen.Remove(SelectedQuestion.Question);
                 DbContext.SaveChanges();
-                RaisePropertyChanged();
+                Questions.Remove(SelectedQuestion);
+                RaisePropertyChanged("Questions");
             }
             catch
             { }
@@ -158,21 +163,23 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         public string VraagName
         {
             get { return _VraagNaam; }
-            set { var _OldValue = _VraagNaam; _VraagNaam = value; RaisePropertyChanged(VraagName,_OldValue,value,true); }
+            set { var _OldValue = _VraagNaam; _VraagNaam = value; /*RaisePropertyChanged(_VraagNaam, _OldValue, value, true);*/ }
         }
 
         public string QuizName
         {
             get { return _QuizName; }
-            set { var _OldValue = _QuizName; _QuizName = value; RaisePropertyChanged(QuizName, _OldValue, value, true); }
+            set { var _OldValue = _QuizName; _QuizName = value; /*RaisePropertyChanged(_QuizName, _OldValue, value, true);*/ }
         }
 
         public int QuizId
         {
             get { return _QuizId; }
-            set { var _OldValue = _QuizId; _QuizId = value; RaisePropertyChanged(QuizId.ToString(), _OldValue, value, true);
+            set { var _OldValue = _QuizId; _QuizId = value; /*RaisePropertyChanged(_QuizId.ToString(), _OldValue, value, true);*/
 
-                    for (int i = 0; i < Questions.Count(); i++)
+                var QuestionList = DbContext.Vragen.ToList().Select(Q => new QuestionsViewModel(Q));
+                Questions = new ObservableCollection<QuestionsViewModel>(QuestionList);
+                for (int i = 0; i < Questions.Count(); i++)
                     {
                         if (Questions[i].Question.QuizId != _QuizId)
                         {
@@ -180,6 +187,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                             i = -1;
                         }
                     }
+                RaisePropertyChanged("Questions");
             }
         }
         

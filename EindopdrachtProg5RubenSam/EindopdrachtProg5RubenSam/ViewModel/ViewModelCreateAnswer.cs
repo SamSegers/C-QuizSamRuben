@@ -116,6 +116,10 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 DbContext.Antwoorden.Add(A);
                 DbContext.SaveChanges();
+
+                AnswerViewModel AVM = new AnswerViewModel(A);
+                this.Answers.Add(AVM);
+                RaisePropertyChanged("Answers");
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
@@ -156,7 +160,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 DbContext.Antwoorden.Remove(_SelectedAnswer.Antwoord);
                 DbContext.SaveChanges();
-                RaisePropertyChanged();
+                this.Answers.Remove(_SelectedAnswer);
+                RaisePropertyChanged("Answers");
             }
             catch
             { }
@@ -170,7 +175,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         public string AnswerName
         {
             get { return _AnswerName; }
-            set { var _OldValue = _AnswerName; _AnswerName = value; RaisePropertyChanged(_AnswerName, _OldValue, value, true); }
+            set { var _OldValue = _AnswerName; _AnswerName = value; /*RaisePropertyChanged(_AnswerName, _OldValue, value, true);*/ }
         }
 
         public string QuestionName
@@ -186,7 +191,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 var _OldValue = _QuestionId; _QuestionId = value; RaisePropertyChanged(_QuestionId.ToString(), _OldValue, value, true);
 
-
+                var AnswersList = DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A));
+                Answers = new ObservableCollection<AnswerViewModel>(AnswersList);
                 for (int i = 0; i < Answers.Count(); i++)
                 {
                     if (Answers[i].Antwoord.VraagId != _QuestionId)
@@ -197,18 +203,21 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                 }
 
                 this.Category = DbContext.Vragen.Where(V => V.Id == this._QuestionId).First().Category;
+
+                RaisePropertyChanged("Answers");
+                RaisePropertyChanged("Category");
             }
         }
 
         public string Category
         {
             get { return _Category; }
-            set { var _OldValue = _Category; _Category = value; RaisePropertyChanged(_Category, _OldValue, value, true); }
+            set { var _OldValue = _Category; _Category = value; /*RaisePropertyChanged(_Category, _OldValue, value, true);*/ }
         }
 
         public bool IsCorrect
         {
-            get { if (SelectedAnswer != null) return Convert.ToBoolean(this._SelectedAnswer.Antwoord.Correct); else return false; }
+            get { if (SelectedAnswer != null) { RaisePropertyChanged("Answers"); return Convert.ToBoolean(this._SelectedAnswer.Antwoord.Correct); } else return false; }
             set
             {
                 if (SelectedAnswer != null)
@@ -216,7 +225,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                     var _Oldvalue = this._SelectedAnswer.Antwoord.Correct;
                     DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.Id == _SelectedAnswer.Antwoord.Id).First().IsCorrect = Convert.ToInt32(value);
                     DbContext.SaveChanges();
-                    RaisePropertyChanged(_SelectedAnswer.Antwoord.Correct.ToString(), _Oldvalue.ToString(), value.ToString(), true);
+                    //RaisePropertyChanged(_SelectedAnswer.Antwoord.Correct.ToString(), _Oldvalue.ToString(), value.ToString(), true);
                 }
             }
         }

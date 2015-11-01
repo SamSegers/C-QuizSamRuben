@@ -22,6 +22,7 @@ namespace EindopdrachtProg5RubenSam
         public ViewCreateQuiz()
         {
             InitializeComponent();
+
         }
     }
 }

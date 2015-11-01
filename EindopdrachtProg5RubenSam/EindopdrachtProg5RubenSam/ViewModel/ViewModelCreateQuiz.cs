@@ -48,7 +48,9 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                 Q.Name = _QuizName;
                 DbContext.Quizen.Add(Q);
                 DbContext.SaveChanges();
-                this._QuizName = "";
+                QuizViewModel QVM = new QuizViewModel(Q);
+                this.Quizes.Add(QVM);
+                RaisePropertyChanged("Quizes");
             }
             catch { }
         }
@@ -71,7 +73,9 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 DbContext.Quizen.Remove(SelectedQuiz.Quiz);
                 DbContext.SaveChanges();
-                RaisePropertyChanged();
+                Quizes.Remove(SelectedQuiz);
+                RaisePropertyChanged("Quizes");
+                
             }
             catch
             { }

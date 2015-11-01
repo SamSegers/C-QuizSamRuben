@@ -16,7 +16,7 @@
         <Label Content="id:" HorizontalAlignment="Left" Margin="263,62,0,0" VerticalAlignment="Top"/>
         <Label Name="lblId" Content="{Binding Path=QuizId, Mode=TwoWay}" HorizontalAlignment="Left" Margin="303,59,0,0" VerticalAlignment="Top"/>
         <Button Content="Update" Command="{Binding UpdateQuizName}" HorizontalAlignment="Left" Margin="2.962,62,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <DataGrid SelectedItem="{Binding SelectedQuestion}" ItemsSource="{Binding Questions}" Margin="8,106,10,118" Grid.ColumnSpan="2">
+        <DataGrid SelectedItem="{Binding SelectedQuestion}" ItemsSource="{Binding Questions}" AutoGenerateColumns="False" Margin="8,106,10,118" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="75"/>
                 <DataGridTextColumn Header="Naam" Binding="{Binding Name}" Width="75"/>
