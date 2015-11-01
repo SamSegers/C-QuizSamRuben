@@ -52,13 +52,16 @@ namespace EindopdrachtProg5RubenSam.ViewModel
 
         private void CreateNewQuestion()
         {
-           
+            
+
             Vraag V = new Vraag();
             V.Name = _VraagNaam;
             V.QuizId = _QuizId;
             V.Category = "Leeg";
             try
             {
+                
+
                 DbContext.Vragen.Add(V);
                 DbContext.SaveChanges();
 
@@ -92,6 +95,9 @@ namespace EindopdrachtProg5RubenSam.ViewModel
 
         private bool CanCreateQuestion()
         {
+            if (this.Questions.Count() == 10)
+                return false; ;
+
             return true;
         }
 

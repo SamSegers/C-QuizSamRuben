@@ -30,11 +30,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="75"/>
                 <DataGridTextColumn Header="Tekst" Binding="{Binding Name}" Width="75"/>
-                <DataGridTextColumn Header="IsCorrect" Binding="{Binding IsCorrect}" Width="75"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <Button Command="{Binding DeleteAnswer}" Content="Delete" HorizontalAlignment="Left" Margin="254,357,0,0" VerticalAlignment="Top" Width="75"/>
+        <CheckBox IsChecked="{Binding IsCorrect, Mode=TwoWay}" Content="True/false" HorizontalAlignment="Left" Margin="40,365,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

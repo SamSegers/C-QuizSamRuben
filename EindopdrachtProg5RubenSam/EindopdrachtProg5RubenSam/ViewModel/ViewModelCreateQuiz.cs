@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EindopdrachtProg5RubenSam.Views;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             CreateQuiz = new RelayCommand(AddQuiz,CanAddQuiz);
             OpenEditQuiz = new RelayCommand(OpenQuiz,CanOpenQuiz);
             DeleteQuiz = new RelayCommand(RemoveQuiz, CanDeleteQuiz);
+            PlaySelectedQuiz = new RelayCommand(PlayQuiz,CanPlayQuiz);
 
             var QuizList = DbContext.Quizen.ToList().Select(Q => new QuizViewModel(Q));
             Quizes = new ObservableCollection<QuizViewModel>(QuizList);
@@ -81,6 +83,19 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             { }
         }
 
+        private void PlayQuiz()
+        {
+            try
+            {
+                if (this.SelectedQuiz != null)
+                {
+                    ViewPlayQuiz VPQ = new ViewPlayQuiz(this.SelectedQuiz.Id, this.SelectedQuiz.Name);
+                    VPQ.Show();
+                }
+            }
+            catch { }
+        }
+
         private bool CanAddQuiz()
         {
             /* todo: uitbreiden of er echt een naam is voor de quiz etc. */
@@ -97,6 +112,11 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             return true;
         }
 
+        private bool CanPlayQuiz()
+        {
+            return true;
+        }
+
         public string QuizName
         {
             get { return _QuizName; }
@@ -108,6 +128,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         public ICommand OpenEditQuiz { get; set; }
 
         public ICommand DeleteQuiz { get; set; }
+
+        public ICommand PlaySelectedQuiz { get; set; }
 
         public ObservableCollection<QuizViewModel> Quizes { get; set; }
 

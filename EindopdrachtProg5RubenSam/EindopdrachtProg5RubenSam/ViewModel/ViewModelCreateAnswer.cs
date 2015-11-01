@@ -28,6 +28,13 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             {
                 _SelectedAnswer = value;
                 RaisePropertyChanged();
+
+                try
+                {
+                    IsCorrect = Convert.ToBoolean(SelectedAnswer.IsCorrect);
+                    RaisePropertyChanged("IsCorrect");
+                }
+                catch { }
             }
         }
 
@@ -225,6 +232,17 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                     var _Oldvalue = this._SelectedAnswer.Antwoord.Correct;
                     DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.Id == _SelectedAnswer.Antwoord.Id).First().IsCorrect = Convert.ToInt32(value);
                     DbContext.SaveChanges();
+                    this._SelectedAnswer.Antwoord.Correct = Convert.ToInt32(value);
+                    for (int i = 0; i < Answers.Count(); i++)
+                    {
+                        if (Answers[i].Id == this._SelectedAnswer.Id)
+                        {
+                            Answers[i].IsCorrect = Convert.ToInt32(value);
+                            Answers[i].Antwoord.Correct = Convert.ToInt32(value);
+                            break;
+                        }
+                    }
+                    RaisePropertyChanged("Answers");
                     //RaisePropertyChanged(_SelectedAnswer.Antwoord.Correct.ToString(), _Oldvalue.ToString(), value.ToString(), true);
                 }
             }

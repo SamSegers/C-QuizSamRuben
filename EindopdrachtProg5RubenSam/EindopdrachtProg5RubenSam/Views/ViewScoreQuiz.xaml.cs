@@ -19,9 +19,29 @@ namespace EindopdrachtProg5RubenSam.Views
     /// </summary>
     public partial class ViewScoreQuiz : Window
     {
+
+
         public ViewScoreQuiz()
         {
             InitializeComponent();
+        }
+
+        public ViewScoreQuiz(int Points)
+        {
+            // TODO: Complete member initialization
+            //this.Points = Points;
+            InitializeComponent();
+            this.lblScore.Content = Points;
+        }
+
+        public ViewScoreQuiz(int Points, int TotalPoints)
+        {
+            // TODO: Complete member initialization
+            InitializeComponent();
+            this.lblScore.Content = Points;
+            this.lblTotal.Content = "Het totaal te behaalde punten was: " + TotalPoints.ToString();
+
+
         }
     }
 }

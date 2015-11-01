@@ -106,6 +106,7 @@
     <Compile Include="ViewModel\ViewModelCreateQuestion.cs" />
     <Compile Include="ViewModel\ViewModelCreateQuiz.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
+    <Compile Include="ViewModel\ViewModelPlayQuiz.cs" />
     <Compile Include="Views\ViewCreateQuiz.xaml.cs">
       <DependentUpon>ViewCreateQuiz.xaml</DependentUpon>
     </Compile>

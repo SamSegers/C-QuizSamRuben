@@ -8,7 +8,8 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Je behaalde score is:" HorizontalAlignment="Left" Margin="98,49,0,0" VerticalAlignment="Top" Height="26" Width="118"/>
-        <Label Content="Score" HorizontalAlignment="Left" Margin="138,109,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label Name="lblScore" Content="Score" HorizontalAlignment="Left" Margin="138,109,0,0" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label Name="lblTotal" Content="TotalScore" HorizontalAlignment="Left" Margin="44,174,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
