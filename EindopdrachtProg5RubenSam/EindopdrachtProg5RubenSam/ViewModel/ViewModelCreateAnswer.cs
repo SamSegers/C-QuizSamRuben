@@ -185,8 +185,16 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             set
             {
                 var _OldValue = _QuestionId; _QuestionId = value; RaisePropertyChanged(_QuestionId.ToString(), _OldValue, value, true);
-                var AnswerList = DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.VraagId == _QuestionId);
-                AnswerList = new ObservableCollection<AnswerViewModel>(AnswerList);
+
+
+                for (int i = 0; i < Answers.Count(); i++)
+                {
+                    if (Answers[i].Antwoord.VraagId != _QuestionId)
+                    {
+                        Answers.RemoveAt(i);
+                        i = -1;
+                    }
+                }
 
                 this.Category = DbContext.Vragen.Where(V => V.Id == this._QuestionId).First().Category;
             }
@@ -206,7 +214,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                 if (SelectedAnswer != null)
                 {
                     var _Oldvalue = this._SelectedAnswer.Antwoord.Correct;
-                    DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.VraagId == _QuestionId).First().IsCorrect = Convert.ToInt32(value);
+                    DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.Id == _SelectedAnswer.Antwoord.Id).First().IsCorrect = Convert.ToInt32(value);
+                    DbContext.SaveChanges();
                     RaisePropertyChanged(_SelectedAnswer.Antwoord.Correct.ToString(), _Oldvalue.ToString(), value.ToString(), true);
                 }
             }
