@@ -46,6 +46,8 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             SimpleIoc.Default.Register<ViewModelCreateQuiz>();
             SimpleIoc.Default.Register<ViewModelCreateQuestion>();
             SimpleIoc.Default.Register<ViewModelCreateAnswer>();
+            SimpleIoc.Default.Register<ViewModelSelectQuiz>();
+            SimpleIoc.Default.Register<ViewModelPlayQuiz>();
         }
 
         /*public MainViewModel Main
@@ -69,6 +71,20 @@ namespace EindopdrachtProg5RubenSam.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<ViewModelCreateQuiz>();
+            }
+        }
+        public ViewModelSelectQuiz SelectQuizes
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ViewModelSelectQuiz>();
+            }
+        }
+        public ViewModelPlayQuiz PlayQuizes
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ViewModelPlayQuiz>();
             }
         }
 

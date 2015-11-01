@@ -19,9 +19,17 @@ namespace EindopdrachtProg5RubenSam.Views
     /// </summary>
     public partial class ViewPlayQuiz : Window
     {
+     
+        
         public ViewPlayQuiz()
         {
             InitializeComponent();
+        }
+        public ViewPlayQuiz(int QuizId)
+        {
+            InitializeComponent();
+            QuizNrLabel.Content = QuizId;
+            
         }
     }
 }
