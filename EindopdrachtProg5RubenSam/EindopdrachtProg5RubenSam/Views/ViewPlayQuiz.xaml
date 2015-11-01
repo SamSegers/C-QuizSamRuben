@@ -1,15 +1,22 @@
-﻿<Window x:Class="EindopdrachtProg5RubenSam.Views.ViewPlayQuiz"
+﻿
+<Window x:Class="EindopdrachtProg5RubenSam.Views.ViewPlayQuiz"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ViewPlayQuiz" Height="327.17" Width="534.34">
+        Title="ViewPlayQuiz" Height="327.17" Width="534.34"
+        DataContext="{Binding PlayQuizes, Source={StaticResource Locator}}">
     <Grid>
         <Button Content="Next" HorizontalAlignment="Left" Margin="441,255,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="De vraag!" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="401"/>
-        <Label Content="Vraagnr" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Antwoord 1" HorizontalAlignment="Left" Height="75" Margin="103,112,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Antwoord 2" HorizontalAlignment="Left" Height="75" Margin="183,112,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Antwoord 3" HorizontalAlignment="Left" Height="75" Margin="263,112,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Antwoord 4" HorizontalAlignment="Left" Height="75" Margin="343,112,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.96,0.768"/>
+        <Label Content="Quiznr:" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="401"/>
+        <Label Content="Vraagnr:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Name ="QuizNrLabel" Content="{Binding Path=QuizId, Mode=TwoWay}" HorizontalAlignment="Left" Margin="161,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.208,0.703"/>
+        <Label Name ="VraagNrLabel" Content="" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="{Binding Answer1}" Background="{Binding BackgroundColor}" HorizontalAlignment="Left" Margin="64,104,0,0" VerticalAlignment="Top" Width="75" Height="62"/>
+        <Button Content="{Binding Answer2}" HorizontalAlignment="Left" Margin="161,104,0,0" VerticalAlignment="Top" Width="75" Height="62"/>
+        <Button Content="{Binding Answer3}" HorizontalAlignment="Left" Margin="262,104,0,0" VerticalAlignment="Top" Width="75" Height="62"/>
+        <Button Content="{Binding Answer4}" HorizontalAlignment="Left" Margin="364,104,0,0" VerticalAlignment="Top" Width="75" Height="62"/>
+
+
+
 
     </Grid>
 </Window>

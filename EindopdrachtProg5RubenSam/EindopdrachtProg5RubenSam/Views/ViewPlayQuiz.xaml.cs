@@ -23,5 +23,10 @@ namespace EindopdrachtProg5RubenSam.Views
         {
             InitializeComponent();
         }
+        public ViewPlayQuiz(int QuizId)
+        {
+            InitializeComponent();
+            QuizNrLabel.Content = QuizId;
+        }
     }
 }
