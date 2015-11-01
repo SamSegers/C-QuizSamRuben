@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EindopdrachtProg5RubenSam.ViewModel
 {
-    class AnswerViewModel : ViewModelBase
+    public class AnswerViewModel : ViewModelBase
     {
         public int Id
         {

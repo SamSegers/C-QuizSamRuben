@@ -109,7 +109,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         private void AddNewAnswer()
         {
             Antwoord A = new Antwoord();
-            A.Name = this._QuestionName;
+            A.Name = this.AnswerName;
             A.Correct = 0;
             A.VraagId = this._QuestionId;
             try
@@ -131,7 +131,7 @@ namespace EindopdrachtProg5RubenSam.ViewModel
                         // the current instance as InnerException
                         raise = new InvalidOperationException(message, raise);
                     }
-                    // throw raise;
+                    throw raise;
                 }
 
             }
@@ -140,10 +140,14 @@ namespace EindopdrachtProg5RubenSam.ViewModel
 
         private bool CanAddAnswer()
         {
-            if (DbContext.Vragen.Where(V => V.Id == this._QuestionId).First().Antwoords.Count() > 3)
-                return false;
-            else
-                return true;
+            try
+            {
+                if (DbContext.Vragen.Where(V => V.Id == this._QuestionId).First().Antwoords.Count() > 3)
+                    return false;
+                else
+                    return true;
+            }
+            catch { return false; }
         }
 
         private void RemoveAnswer()
@@ -196,12 +200,15 @@ namespace EindopdrachtProg5RubenSam.ViewModel
 
         public bool IsCorrect
         {
-            get { return Convert.ToBoolean(this._SelectedAnswer.Antwoord.Correct); }
+            get { if (SelectedAnswer != null) return Convert.ToBoolean(this._SelectedAnswer.Antwoord.Correct); else return false; }
             set
             {
-                var _Oldvalue = this._SelectedAnswer.Antwoord.Correct;
-                DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.VraagId == _QuestionId).First().IsCorrect = Convert.ToInt32(value);
-                RaisePropertyChanged(_SelectedAnswer.Antwoord.Correct.ToString(), _Oldvalue.ToString(), value.ToString(), true);
+                if (SelectedAnswer != null)
+                {
+                    var _Oldvalue = this._SelectedAnswer.Antwoord.Correct;
+                    DbContext.Antwoorden.ToList().Select(A => new AnswerViewModel(A)).Where(A => A.Antwoord.VraagId == _QuestionId).First().IsCorrect = Convert.ToInt32(value);
+                    RaisePropertyChanged(_SelectedAnswer.Antwoord.Correct.ToString(), _Oldvalue.ToString(), value.ToString(), true);
+                }
             }
         }
 

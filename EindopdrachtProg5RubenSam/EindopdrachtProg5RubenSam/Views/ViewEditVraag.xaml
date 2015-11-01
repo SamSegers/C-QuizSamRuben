@@ -15,8 +15,8 @@
         <Button Content="Update" Command="{Binding UpdateQuestionName}" HorizontalAlignment="Left" Margin="473,98,0,0" VerticalAlignment="Top" Width="75"/>
 
         <Button Content="Add" Command="{Binding AddAnswer}" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
-        
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="172,10,0,0" TextWrapping="Wrap" Text="Antwoord hier invullen" VerticalAlignment="Top" Width="208"/>
+
+        <TextBox  Text="{Binding Path=AnswerName, Mode=TwoWay}" HorizontalAlignment="Left" Height="25" Margin="172,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208"/>
         
         <Label Content="Nieuw antwoord:" HorizontalAlignment="Left" Margin="60,9,0,0" VerticalAlignment="Top" Height="25" Width="107"/>
 

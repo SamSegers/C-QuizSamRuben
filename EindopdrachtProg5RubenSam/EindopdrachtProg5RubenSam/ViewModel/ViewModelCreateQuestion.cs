@@ -171,8 +171,15 @@ namespace EindopdrachtProg5RubenSam.ViewModel
         {
             get { return _QuizId; }
             set { var _OldValue = _QuizId; _QuizId = value; RaisePropertyChanged(QuizId.ToString(), _OldValue, value, true);
-                    var QuestionList = DbContext.Vragen.ToList().Select(Q => new QuestionsViewModel(Q)).Where(Q => Q.Question.Id == _QuizId);
-                    QuestionList = new ObservableCollection<QuestionsViewModel>(QuestionList);
+
+                    for (int i = 0; i < Questions.Count(); i++)
+                    {
+                        if (Questions[i].Question.QuizId != _QuizId)
+                        {
+                            Questions.RemoveAt(i);
+                            i = -1;
+                        }
+                    }
             }
         }
         
